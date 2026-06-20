@@ -105,7 +105,7 @@ It produced a clean `is_prime` helper, ran it, and printed `[2, 3, 5, 7, 11, 13,
 
 The interesting lesson isn't "LLMs can fix code." It's *when* self-correction works at all: only when something outside the model can verify the answer. Code is one of the few domains that gives you that signal for free. Build the loop around the verifier, not around the model's confidence.
 
-**Code:** [link your GitHub repo here]
+**Code:** [github.com/randhirmanekar15/self-correcting-code-assistant](https://github.com/randhirmanekar15/self-correcting-code-assistant)
 
 ---
 

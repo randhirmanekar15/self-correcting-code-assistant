@@ -40,7 +40,7 @@ def strip_fences(text: str) -> str:
 def generate(task: str, prev_code: str | None, error: str | None) -> str:
     """Ask the model for code, including the previous failure if there was one."""
     user = f"Task:\n{task}\n"
-    if prev_code and error:
+    if prev_code is not None and error is not None:
         user += (
             f"\nYour previous code:\n{prev_code}\n"
             f"\nIt failed with this error:\n{error}\n"
@@ -57,7 +57,12 @@ def generate(task: str, prev_code: str | None, error: str | None) -> str:
 
 
 def run_code(code: str) -> tuple[bool, str]:
-    """Execute code in a subprocess and return (passed, output_or_error)."""
+    """Execute code in a subprocess and return (passed, output_or_error).
+
+    SECURITY: this runs model-generated code with full host privileges. It is
+    intended only for local use on trusted prompts. Do not expose it to untrusted
+    input without an OS-level sandbox (container, seccomp, restricted user).
+    """
     with tempfile.NamedTemporaryFile(
         "w", suffix=".py", delete=False, encoding="utf-8"
     ) as handle:

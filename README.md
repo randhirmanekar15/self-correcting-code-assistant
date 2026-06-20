@@ -22,7 +22,7 @@ Code is the perfect case. It either runs or it throws. This project builds the e
 
 ## How it works
 
-```
+```text
 task ──▶ generate(code) ──▶ run_code() ──▶ pass? ──yes──▶ done
             ▲                    │
             │                   no
@@ -66,7 +66,7 @@ python agent.py "write a function that returns the first 10 prime numbers and pr
 
 Example (first-pass success):
 
-```
+```text
 PASSED. Final code:
 def is_prime(n): ...
 Output:
